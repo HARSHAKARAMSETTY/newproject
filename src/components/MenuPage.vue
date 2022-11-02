@@ -117,7 +117,7 @@ export default{
             dishes:[
                     {head:"Veg Curry"},
                     {message:"Please notify us if you need it Mild - Medium or Hot"},
-                    {title:'TadkaDaal',price:'5.00',description:'combination three lentils tempered with crushed garlic and whole red chillies'},
+                    {title:'TadkaDaal',price:'5.00',description:'combination three lentils tempered with crushed garlic and whole red chillies',},
                     {title:'ChannaMasala',price:'6.00',description:'Semi dry curry made with chick-peas and freshly ground spices.'},
                     {title:'ButterMasala',price:'7.00',description:'Cottage chesse cooked in a simmered gravy made of butter,tomato,cashew and cream.'},
                     {title:'TikkaMasala',price:'8.00',description:'Cottage cheese cooked in a fresh tomatoes and cashew sauce along with capsicum, onion and cream.'},
