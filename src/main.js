@@ -7,6 +7,8 @@ import footer from '@/components/FooterPage.vue'
 Vue.component('FooterPage', footer)
 
 Vue.config.productionTip = false
+
+export const eventBus = new Vue();
 Vue.use(VueResource);
 
 new Vue({

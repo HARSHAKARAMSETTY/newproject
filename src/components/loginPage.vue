@@ -1,20 +1,26 @@
 <template>
     <div id="login">
         <h1 v-if="!submitted">Enter your Login Deatils</h1>
-        <form v-if="!submitted" id="container">
+        <form v-if="!submitted" id="container" @login.prevent="onlogin">
+            <div class="errorMessage" v-if="errors.length">
+                <h1>Please correct the following error. (s)</h1>
+                <ul>
+                    <li v-for="(error, index) in errors" :key="index">{{ error }}</li>
+                </ul>
+            </div>
             <label name="username">Username: </label>
-            <input type="text" placeholder="Enter Your Username">
+            <input type="text" placeholder="Enter Your Username" v-model="name" />
             <br>
             <br>
             <label name="Password">Password:</label>
-            <input type="text" name="password" placeholder="Enter Your Password">
+            <input type="text" name="password" placeholder="Enter Your Password" v-model="password" />
             <br>
             <br>
             <input type="checkbox">
             <label for="checkbox">Keep me signed in.</label>
             <br>
             <br>
-            <button v-on:click.prevent="post" id="login">Login</button>
+            <button v-on:click.prevent="login" id="login">Login</button>
             <p>Forgot Password??</p>
             <a href="/signup" >Create an  account here</a>
         </form>
@@ -25,9 +31,10 @@
     </div>
 </template>
 
-<script lang="js">
+<script>
 
 import img from "@/assets/images/backgroundImages/myimage1.jpg"
+import {eventBus} from '../main.js'
     export default{
         
         data(){
@@ -35,11 +42,12 @@ import img from "@/assets/images/backgroundImages/myimage1.jpg"
                 username:"",
                 password:'',
                 submitted:false,
-                img
+                img,
+                errors:[]
             }
         },
         methods:{
-            post:function(){
+            login:function(){
                 console.log("login")
             this.$http.post('https://jsonplaceholder.typicode.com/posts',{
                 title: this.username,
@@ -49,9 +57,26 @@ import img from "@/assets/images/backgroundImages/myimage1.jpg"
                 console.log(data);
                 this.submitted=true;
             });
-        } 
+        } ,
+        onlogin() {
+            this.errors = []
+            if(this.username && this.password){
+                let loginPage ={
+                    name:this.username,
+                    password:this.password
+                }
+                eventBus.$emit('login-page', loginPage)
+                this.username = null
+                this.password = null
+                }
+                else{
+                    if(!this.username) this.errors.push("username required")
+                    if(!this.password) this.errors.push("password required")
+
+                }
+            }
+        },
     }
-}
 </script>
 
 <style scoped>

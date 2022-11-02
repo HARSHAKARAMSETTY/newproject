@@ -30,8 +30,10 @@
         <div class="items">
             <dishes>
                 <div class="menu" v-for="dish in dishes" :key="dish">
-                    <h2>{{dish.head}}</h2>
-                    <p>{{dish.message}}</p>
+                    <div>
+                        <h2>{{dish.head}}</h2>
+                        <p>{{dish.message}}</p>
+                    </div>
                     <h3 >{{dish.title}}</h3>
                     <h5 class="price">{{dish.price}}</h5>
                     <button class="btn" v-on:click="add(dish)">ADD</button>
