@@ -13,6 +13,7 @@
                     <div class="header">
                         <a href="#section.head">{{[section.head][0]}}</a>
                     </div>
+                    display
                     <!--<a href="#vegcurrys">VEG CURRY'S</a>
                     <br>
                     <br>
