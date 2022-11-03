@@ -2,12 +2,23 @@
     <div class="menu">
         <p>OUR DISHES</p>
         <h1>Our Menu</h1>
-        <div class="row1">
-            <div class="curry">
-                <a href="/menuPage"><img :src="currys" class="image" ></a>
+        <div>
+            <div class="header" v-for="menu in menus" :key="menu">
+                <div class="dishes">
+                    <a href="/menuPage"><img :src="menu.img" class="image"></a>
+                    <br>
+                    <br>
+                    <a href="/menuPage"> {{menu.title}} </a>
+                    <br>
+                    <br>
+                    <a href="/menuPage"> {{menu.order}} <span> &#x2192;</span></a>
+                </div>
+            </div>
+        </div>        
+                <!--<a href="/menuPage#section.head"><img :src="currys" class="image" ></a>
                 <br>
                 <br>
-                <a href="/menuPage">CURRY DISHES</a>
+                <a href="/menuPage#sectio.head">CURRY DISHES</a>
                 <br>
                 <br>
                 <a href="/menuPage">ORDER NOW <span>&#x2192;</span></a>
@@ -59,7 +70,7 @@
                 <br>
                 <a href="/menuPage">ORDER NOW <span>&#x2192;</span></a>
             </div>
-        </div>
+        </div>-->
     </div>
 </template>
 
@@ -74,17 +85,42 @@ import naans from "@/assets/images/MenuImages/naans.jpg";
 export default{
     data(){
         return{
-            "currys":currys,
-            chows,
-            biryanis,
-            sweets,
-            tandooris,
-            naans,
+            menus:[
+                {
+                    img: currys,
+                    title:"CURRY DISHES",
+                    order:"ORDER NOW"
+                },
+                {
+                    img:biryanis,
+                    title:"BIRYANI DISHES",
+                    order:"ORDER NOW"
+                },
+                {
+                    img:chows,
+                    title:"CHOW MEIN",
+                    order:"ORDER NOW"
+                },
+                {
+                    img:sweets,
+                    title: "SWEET N SOUR",
+                    order:"ORDER NOW"
+                },
+                {
+                    img:tandooris,
+                    title: "TANDOORI",
+                    order:"ORDER NOW"
+                },
+                {
+                    img:naans,
+                    title:"NAANS",
+                    order:"ORDER NOW"
+                },
+            ],
         }
     },
     }
 </script>
-
 <style scoped>
 .menu{
     background-color: black;
@@ -94,40 +130,15 @@ a{
     color: white;
     text-decoration: none;  
 }
-.curry{
-    display: inline-block;
-    margin: 50px;
-}
-.biryani{
-    display: inline-block;
-    margin: 50px;
-
-}
-.chow{
-    display: inline-block;
-    margin: 50px;
-
-}
 .image{
-    width: 120px;
+    width: 200px;
     height: 200px;
 }
-.row2{
-    display: inline;
-}
-.sweet{
+.header,.dishes{
     display: inline-block;
     margin: 50px;
 }
-.tandoori{
-    display: inline-block;
-    margin: 50px;
+.dishes{
+    margin: 40px;
 }
-.naan{
-    display: inline-block;
-    margin: 50px;
-
-}
-
-
 </style>
